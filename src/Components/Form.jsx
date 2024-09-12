@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Message from "./Message";
+import { ContextGlobal } from "../Context/global.context";
 
 const Form = () => {
   let infoUser = {
@@ -8,6 +9,7 @@ const Form = () => {
   };
   const [user, setUser] = useState(infoUser);
   const [verify, setVerify] = useState(0);
+  const { state } = useContext(ContextGlobal);
 
   /* ======================= validation ======================= */
 
@@ -56,19 +58,19 @@ const Form = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Nombre:</label>
-        <input type="text" id="name" onChange={handleName} />
-        <label htmlFor="email">Email:</label>
-        <input type="email" id="email" onChange={handleEmail} />
-        <button>Send</button>
+    <div className={`form_container`}>
+      <form className={`form`} onSubmit={handleSubmit}>
+        <div className={`input_label`}>
+          <label htmlFor="name">Nombre:</label>
+          <input type="text" id="name" onChange={handleName} />
+        </div>
+        <div className={`input_label`}>
+          <label htmlFor="email">Email:</label>
+          <input type="email" id="email" onChange={handleEmail} />
+        </div>
+        <button className={`${state.theme} favButton btn_send`}>Send</button>
       </form>
-      {verify == 2 ? (
-        <Message user={user} />
-      ) : (
-        verify == 1 && "Por favor verifique su información nuevamente"
-      )}
+      {verify !== 0 && <Message user={user} verify={verify} />}
     </div>
   );
 };

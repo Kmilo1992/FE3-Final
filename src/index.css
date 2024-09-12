@@ -1,5 +1,23 @@
-body {
+/* general styles */
+
+:root {
+  --primary-color: rgb(70, 98, 177);
+  --secundary-color: rgb(58, 77, 141);
+  --third-color: rgba(59, 58, 141, 0.267);
+  --fourd-color: rgba(13, 26, 68, 0.808);
+  --bg-principal: white;
+  --bg-secundary: #c0bcbc;
+  --bg-dorder: #8b8b8b;
+  --bg-dorder: rgba(211, 72, 37, 0.5);
+}
+
+* {
+  padding: 0;
   margin: 0;
+  box-sizing: border-box;
+  color: black;
+  list-style: none;
+  text-decoration: none;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -7,84 +25,71 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-.favButton{
-  background-color: rgba(136, 136, 136, 0.116);
-  padding: 10px;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-}
+/* =================== navbar styles =================== */
 
-h1{
-  text-align: center;
-}
-
-nav{
+.navbar_container {
   display: flex;
-  width: 80vw;
-  justify-content: flex-start;
-  padding: 1rem;
+  justify-content: space-around;
+  height: 100%;
+  box-shadow: 0px 6px 12px -6px rgba(59, 58, 141, 0.267);
+
+  .link_container {
+    display: flex;
+    align-items: center;
+    height: 60px;
+
+  }
+
+  .link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 100%;
+
+    &:hover {
+      color: var(--secundary-color);
+      border-bottom: 3px solid var(--secundary-color);
+      box-sizing: content-box;
+    }
+
+    &:active {
+      background-color: var(--third-color);
+      color: white;
+      color: var(--fourd-color);
+    }
+  }
 }
 
-a{
-  color: #000;
-  text-decoration: none;
-  margin: 5px;
-  cursor: pointer;
-}
-a:hover{
-  color: rgb(136, 136, 136);
-} 
-
-footer {
+.btn_theme {
+  width: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  position: relative;
-  bottom: 0;
-  width: 90%;
-  height: 40px;
-  margin-top: 2rem;
-}
-
-footer > img{
-  width: 200px;
-  margin: 0;
-}
-footer > p{
-  margin: 0;
-  padding-top: 0.7rem;
-}
-
-form{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 300px;
-  height: 100px;
-  margin: 0 auto;
-}
-
-.card{
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
   align-items: center;
-  width: 200px;
-  padding: 0.5rem 0.5rem 0 0.5rem;
-  border: 0.5px solid rgb(136, 136, 136);
+  border: none;
+  border-radius: 5px;
+  background-color: var(--bg-secundary);
+  pointer-events: all;
+
+  &:hover {
+    scale: 1.03;
+    background-color: var(--bg-dorder);
+  }
 }
 
-.card:hover{
-  border: 0.5px solid rgb(206, 217, 142);
+h1 {
+  padding: 20px;
+  text-align: center;
 }
 
-.card-grid{
+/*  =================== home styles =================== */
+
+.home_container {
+  padding: 20px 0 60px 0;
+}
+
+.card-grid {
   display: flex;
   justify-content: space-evenly;
   gap: 1rem;
@@ -94,16 +99,113 @@ form{
   margin: 0 auto;
 }
 
-table {
- border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    display: table;
-    border: 1px solid #ccc;
+/*  =================== card styles =================== */
 
+.card {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 250px;
+  padding: 0rem 0rem 0.5rem 0rem;
+  border: 1px solid var(--bg-secundary);
+  box-shadow: 0px 3px 10px -5px var(--bg-dorder);
+  border-radius: 8px;
+
+  &:hover {
+    box-shadow: 0px 6px 12px 0px var(--bg-dorder);
+  }
+
+  img {
+    width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  &>a>h3:hover {
+    scale: 1.05;
+    color: var(--bg-secundary);
+  }
 }
 
-td, th {
+.favButton {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  width: 75%;
+  cursor: pointer;
+  color: white;
+
+  &:hover {
+    background-color: var(--secundary-color);
+  }
+
+  &:active {
+    background-color: var(--fourd-color);
+  }
+}
+
+/*  =================== favs styles =================== */
+
+.contact_container {
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 300px;
+  padding: 20px 10px;
+  margin: auto 40px;
+  border: 1px solid var(--bg-secundary);
+  box-shadow: 0px 3px 10px -3px var(--bg-dorder);
+  border-radius: 10px;
+
+  .input_label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    & input {
+      padding-left: 5px;
+      height: 30px;
+      border: 1px solid gray;
+      border-radius: 5px;
+    }
+  }
+
+  .btn_send {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
+/*  =================== detail styles =================== */
+
+.detail_container {
+  padding: 20px 0px 60px 0px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: auto;
+  width: 75%;
+  display: table;
+  border: 1px solid #ccc;
+}
+
+td,
+th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
@@ -113,10 +215,54 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-.dark{
+/*  =================== footer styles =================== */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  height: 180px;
+}
+
+footer>p {
+  padding: 1em;
+  font-weight: 600;
+  background-color: rgba(64, 16, 126, 0.767);
+  color: white;
+}
+
+.img_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(91, 75, 112, 0.795);
+  height: 100%;
+
+  &>img {
+    width: 200px;
+  }
+}
+
+.networks_contact {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  &>img {
+    width: 20px;
+  }
+}
+
+
+/*  =================== DARK styles =================== */
+
+.dark {
   background-color: #12121296;
   color: white;
 }
-.dark > a {
+
+.dark>a {
   color: white;
 }

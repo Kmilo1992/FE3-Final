@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { useContext} from 'react'
 import Form from '../Components/Form'
+import { ContextGlobal } from "../Context/global.context";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Contact = () => {
+  const { state } = useContext(ContextGlobal);
   return (
-    <div>
-      <h2>Want to know more?</h2>
-      <p>Send us your questions and we will contact you</p>
+    <div className={`${state.theme} contact_container`}>
+      <div className={`text_contact`}>
+        <h1>Want to know more?</h1>
+        <h3>Send us your questions and we will contact you</h3>
+      </div>
       <Form/>
     </div>
-  )
-}
+  );
+};
 
 export default Contact
