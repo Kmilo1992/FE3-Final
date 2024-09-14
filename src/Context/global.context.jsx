@@ -1,30 +1,46 @@
 import { createContext, useEffect, useReducer, useState } from "react";
 
-export const initialState = { theme: "", data: [] };
-const reducer = (state, action) => {
+const initialFavs = JSON.parse(localStorage.getItem("favs_dentist")) || [];
+
+    export const initialState = {
+    theme: "",
+    data: [],
+    favs: initialFavs,
+    stateCard: "home",
+    };
+    const reducer = (state, action) => {
     switch (action.type) {
         case "dark":
-            return { ...state, theme: "dark" };
+        return { ...state, theme: "dark" };
         case "light":
-            return { ...state, theme: "" };
+        return { ...state, theme: "" };
         case "GET_DATA_DENTISTS":
-            return { ...state, data: action.payload };
+        return { ...state, data: action.payload };
+        case "SET_FAVS":
+        return { ...state, favs: [...state.favs, action.payload] };
+        case "MODIFY_FAVS":
+        return { ...state, favs: action.payload };
+        case "STATE_CARD":
+        return { ...state, stateCard: action.payload };
         default:
-    throw new Error("Error in style dark or light");
+        throw new Error("Error in style dark or light");
     }
 };
 
 export const ContextGlobal = createContext(undefined);
 
 export const ContextProvider = ({ children }) => {
-  //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
     const [state, dispatch] = useReducer(reducer, initialState);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        localStorage.setItem("favs_dentist", JSON.stringify(state.favs));
+    }, [state.favs]);
+
+    useEffect(() => {
         setTimeout(() => {
         getData();
-        }, 0);
+        }, 2000);
     }, []);
 
     const getData = () => {
@@ -44,7 +60,7 @@ export const ContextProvider = ({ children }) => {
 
     return (
         <ContextGlobal.Provider value={{ loading, state, dispatch }}>
-            {children}
+        {children}
         </ContextGlobal.Provider>
     );
 };

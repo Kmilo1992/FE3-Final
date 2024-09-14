@@ -8,7 +8,6 @@
   --bg-principal: white;
   --bg-secundary: #c0bcbc;
   --bg-dorder: #8b8b8b;
-  --bg-dorder: rgba(211, 72, 37, 0.5);
 }
 
 * {
@@ -32,6 +31,8 @@
   justify-content: space-around;
   height: 100%;
   box-shadow: 0px 6px 12px -6px rgba(59, 58, 141, 0.267);
+  background-color: white;
+  /* position: fixed; */
 
   .link_container {
     display: flex;
@@ -62,6 +63,7 @@
 }
 
 .btn_theme {
+  margin-left: 25px;
   width: 30px;
   height: 30px;
   display: flex;
@@ -87,6 +89,7 @@ h1 {
 
 .home_container {
   padding: 20px 0 60px 0;
+  min-height: 75vh;
 }
 
 .card-grid {
@@ -147,14 +150,15 @@ h1 {
   }
 }
 
-/*  =================== favs styles =================== */
+/*  =================== contact and form styles =================== */
 
 .contact_container {
-  padding: 100px 20px;
+  padding: 0px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  min-height: 75vh;
 }
 
 .form {
@@ -169,6 +173,10 @@ h1 {
   border: 1px solid var(--bg-secundary);
   box-shadow: 0px 3px 10px -3px var(--bg-dorder);
   border-radius: 10px;
+
+  &:hover {
+    box-shadow: 0px 6px 12px 0px var(--bg-dorder);
+  }
 
   .input_label {
     display: flex;
@@ -192,6 +200,9 @@ h1 {
 /*  =================== detail styles =================== */
 
 .detail_container {
+  width: 100%;
+  min-height: 75vh;
+  margin: auto;
   padding: 20px 0px 60px 0px;
 }
 
@@ -199,7 +210,8 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   margin: auto;
-  width: 75%;
+  min-width: 80%;
+  min-height: 90%;
   display: table;
   border: 1px solid #ccc;
 }
@@ -255,14 +267,42 @@ footer>p {
   }
 }
 
-
 /*  =================== DARK styles =================== */
 
 .dark {
   background-color: #12121296;
-  color: white;
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  a,
+  th,
+  td,
+  label {
+    color: rgb(240, 240, 240);
+  }
 }
 
-.dark>a {
-  color: white;
+@media (max-width: 600px) {
+  .navbar_container>img {
+    display: none;
+  }
+
+  .contact_container {
+    flex-direction: column;
+    justify-content: center;
+    gap: 3em;
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .img_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5em;
+  }
 }
